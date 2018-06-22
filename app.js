@@ -1,6 +1,7 @@
 var express=require('express');
 var path=require('path');
 var app=express();
+var fs=require('fs');
 var mysql=require('mysql');
 var bodyParser=require('body-parser');
 
@@ -22,12 +23,7 @@ console.log('Connected');
 ////////////////////
 
 app.use(express.static(path.join(__dirname , '/public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
 
-app.use('/',(req,res) => {
-    res.sendfile(__dirname + '/home.html');
-});
 
 app.post('/details1',function(req,res){
 
@@ -68,10 +64,10 @@ if(error){
     res.send('Enter proper values!');
 }else
 {
-    console.log('connected in query');
+    console.log('Values inserted');
     res.send('Welcome! You have successfully registered!');
 }
 });
 });
 
-app.listen('3307');
+app.listen('2000');
